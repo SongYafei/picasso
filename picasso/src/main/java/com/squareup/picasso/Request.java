@@ -77,7 +77,8 @@ public final class Request {
 
   private Request(Uri uri, int resourceId, List<Transformation> transformations, int targetWidth,
       int targetHeight, boolean centerCrop, boolean centerInside, float rotationDegrees,
-      float rotationPivotX, float rotationPivotY, boolean hasRotationPivot, Bitmap.Config config, boolean purgeable) {
+      float rotationPivotX, float rotationPivotY, boolean hasRotationPivot, Bitmap.Config config,
+      boolean purgeable) {
     this.uri = uri;
     this.resourceId = resourceId;
     if (transformations == null) {
@@ -295,9 +296,10 @@ public final class Request {
     }
 
     /**
-     * This option allows that the resulting bitmaps will allocate its pixels such that they can be purged if the
-     * system needs to reclaim memory. While this option can help avoid big Dalvik heap allocations, it sacrifices
-     * performance predictability since any image that the view system tries to draw may incur a decode delay.
+     * This option allows that the resulting bitmaps will allocate its pixels such that they
+     * can be purged if the system needs to reclaim memory. While this option can help avoid
+     * big Dalvik heap allocations, it sacrifices performance predictability since any image
+     * that the view system tries to draw may incur a decode delay.
      */
     public Builder purgeable() {
       purgeable = true;
@@ -386,7 +388,8 @@ public final class Request {
         throw new IllegalStateException("Center inside requires calling resize.");
       }
       return new Request(uri, resourceId, transformations, targetWidth, targetHeight, centerCrop,
-          centerInside, rotationDegrees, rotationPivotX, rotationPivotY, hasRotationPivot, config, purgeable);
+          centerInside, rotationDegrees, rotationPivotX, rotationPivotY, hasRotationPivot, config,
+          purgeable);
     }
   }
 }
