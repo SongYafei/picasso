@@ -311,10 +311,12 @@ abstract class BitmapHunter implements Runnable {
   static BitmapFactory.Options createBitmapOptions(Request data) {
     final boolean justBounds = data.hasSize();
     final boolean hasConfig = data.config != null;
+    final boolean purgeable = data.purgeable;
     BitmapFactory.Options options = null;
-    if (justBounds || hasConfig) {
+    if (justBounds || hasConfig || purgeable) {
       options = new BitmapFactory.Options();
       options.inJustDecodeBounds = justBounds;
+      options.inPurgeable = purgeable;
       if (hasConfig) {
         options.inPreferredConfig = data.config;
       }

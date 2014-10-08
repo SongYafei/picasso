@@ -197,6 +197,17 @@ public class RequestCreator {
   }
 
   /**
+   * This option allows that the resulting bitmaps will allocate its pixels such that they
+   * can be purged if the system needs to reclaim memory. While this option can help avoid big
+   * Dalvik heap allocations, it sacrifices performance predictability since any image
+   * that the view system tries to draw may incur a decode delay.
+   */
+  public RequestCreator purgeable() {
+    data.purgeable();
+    return this;
+  }
+
+  /**
    * Centers an image inside of the bounds specified by {@link #resize(int, int)}. This scales
    * the image so that both dimensions are equal to or less than the requested bounds.
    */
